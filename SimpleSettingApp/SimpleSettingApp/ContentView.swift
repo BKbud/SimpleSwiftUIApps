@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var airplaneSettingOn: Bool = false
+    
     var body: some View {
         NavigationStack {
             List {
@@ -42,6 +45,7 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "folder")
                                 .resizable()
+                                .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .padding(5)
                                 .background(.indigo)
@@ -54,6 +58,7 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "person")
                                 .resizable()
+                                .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .padding(5)
                                 .background(.green)
@@ -63,28 +68,78 @@ struct ContentView: View {
                         }
                     }
                 }
-                NavigationLink(destination: Text("Screen C")) {
-                    HStack {
-                        Image(systemName: "calendar")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .padding(5)
-                            .background(.blue)
-                            .foregroundStyle(.white)
-                            .cornerRadius(5)
-                        Text("C")
+                Section {
+                    NavigationLink(destination: Text("Screen C")) {
+                        HStack {
+                            Image(systemName: "calendar")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(5)
+                                .background(.blue)
+                                .foregroundStyle(.white)
+                                .cornerRadius(5)
+                            Text("C")
+                        }
                     }
                 }
-                NavigationLink(destination: Text("Screen D")) {
+                Section {
                     HStack {
                         Image(systemName: "airplane")
                             .resizable()
+                            .aspectRatio(contentMode: .fit)
                             .frame(width: 20, height: 20)
                             .padding(5)
                             .background(.purple)
                             .foregroundStyle(.white)
                             .cornerRadius(5)
-                        Text("D")
+                        Text("Airplane mode")
+                        Spacer()
+                        Toggle(isOn: $airplaneSettingOn) {
+                            
+                        }
+                    }
+                    NavigationLink(destination: Text("Screen wifi")) {
+                        HStack {
+                            Image(systemName: "wifi")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(5)
+                                .background(.blue)
+                                .foregroundStyle(.white)
+                                .cornerRadius(5)
+                            Text("Wi-Fi")
+                            Spacer()
+                            Text("Wi-Fi Description")
+                                .foregroundStyle(.gray)
+                        }
+                    }
+                    NavigationLink(destination: Text("Screen E")) {
+                        HStack {
+                            Image(systemName: "figure.wave.circle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(5)
+                                .background(.orange)
+                                .foregroundStyle(.white)
+                                .cornerRadius(5)
+                            Text("E")
+                        }
+                    }
+                    NavigationLink(destination: Text("Screen Setting")) {
+                        HStack {
+                            Image(systemName: "gearshape.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, height: 20)
+                                .padding(5)
+                                .background(.gray)
+                                .foregroundStyle(.white)
+                                .cornerRadius(5)
+                            Text("Setting")
+                        }
                     }
                 }
             }
